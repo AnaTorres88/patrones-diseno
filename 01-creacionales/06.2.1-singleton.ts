@@ -9,3 +9,16 @@
  *
  * https://refactoring.guru/es/design-patterns/singleton
  */
+
+import ConfigManager from '../helpers/config-manager';
+
+// Import config manager
+export const configManager = new ConfigManager();
+
+configManager.setConfig('apiUrl', 'https://mi-api.com');
+configManager.setConfig('timeout', '5000');
+configManager.setConfig('apikey', 'ABC123');
+
+console.log(configManager.getConfig('apiUrl'))
+console.log(configManager.getConfig('timeout'))
+console.log(configManager.getConfig('apikey'))

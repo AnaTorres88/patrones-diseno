@@ -39,22 +39,35 @@ interface Engine {
 
 // 2. Clases Concretas de Productos
 
-class ElectricCar {
+class ElectricCar implements Vehicle {
+  assemble():void {
+    console.log("Ensamblando un auto eléctrico");
+  }
   // Implementación del método assemble
   // 'Ensamblando un auto eléctrico'
 }
 
-class GasCar {
+class GasCar implements Vehicle {
+    assemble():void {
+      console.log("Ensamblando un auto de combustión");
+  }
   // Implementación del método assemble
   // 'Ensamblando un auto de combustión'
 }
 
-class ElectricEngine {
+class ElectricEngine implements Engine {
+
+  start(): void {
+    console.log("Arrancando motor eléctrico");
+  }
   // Implementación del método start
   // 'Arrancando motor eléctrico'
 }
 
-class GasEngine {
+class GasEngine implements Engine {
+  start(): void {
+    console.log("Arrancando motor de combustión");
+  }
   // Implementación del método start
   // 'Arrancando motor de combustión'
 }
@@ -69,11 +82,23 @@ interface VehicleFactory {
 // 4. Clases Concretas de Fábricas
 
 class ElectricVehicleFactory implements VehicleFactory {
+  createVehicle(): Vehicle {
+    return new ElectricCar();
+  }
+  createEngine(): Engine {
+    return new ElectricEngine();
+  }
   // Implementación de los métodos createVehicle y createEngine
 }
 
 class GasVehicleFactory implements VehicleFactory {
   // Implementación de los métodos createVehicle y createEngine
+  createVehicle(): Vehicle {
+    return new GasCar();
+  }
+  createEngine(): Engine {
+    return new GasEngine();
+  }
 }
 
 // 5. Código Cliente
